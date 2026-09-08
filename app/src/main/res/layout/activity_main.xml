@@ -5,31 +5,45 @@
 
     android:orientation="vertical"
 
-    android:padding="40dp">
+    android:padding="40dp"
+
+    android:background="#101010">
 
 
-<TextView
+    <TextView
 
-    android:text="MODERN TV LAUNCHER"
+        android:text="MODERN TV LAUNCHER"
 
-    android:textSize="32sp"
+        android:textSize="32sp"
 
-    android:textStyle="bold"
+        android:textColor="#FFFFFF"
 
-    android:layout_width="wrap_content"
+        android:textStyle="bold"
 
-    android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:paddingBottom="30dp"/>
 
 
-<GridView
+    <GridView
 
-    android:id="@+id/appGrid"
+        android:id="@+id/appGrid"
 
-    android:numColumns="3"
+        android:numColumns="6"
 
-    android:layout_width="match_parent"
+        android:horizontalSpacing="30dp"
 
-    android:layout_height="match_parent"/>
+        android:verticalSpacing="30dp"
+
+        android:gravity="center"
+
+        android:stretchMode="columnWidth"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

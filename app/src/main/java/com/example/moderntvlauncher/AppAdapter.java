@@ -1,61 +1,168 @@
 package com.example.moderntvlauncher;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.*;
 import android.widget.*;
+import android.graphics.Color;
+import android.graphics.Typeface;
+
+import java.util.ArrayList;
+
 
 public class AppAdapter extends BaseAdapter {
 
+
     Context context;
-
-    String[] apps={
-        "YouTube",
-        "IPTV",
-        "Browser",
-        "File",
-        "Setting",
-        "Play Store"
-    };
+    ArrayList<AppInfo> apps;
 
 
-    public AppAdapter(Context c){
-        context=c;
+    public AppAdapter(Context c, ArrayList<AppInfo> list){
+
+        context = c;
+        apps = list;
+
     }
 
 
+    @Override
     public int getCount(){
-        return apps.length;
+
+        return apps.size();
+
     }
 
 
-    public Object getItem(int p){
-        return apps[p];
+    @Override
+    public Object getItem(int position){
+
+        return apps.get(position);
+
     }
 
 
-    public long getItemId(int p){
-        return p;
+    @Override
+    public long getItemId(int position){
+
+        return position;
+
     }
 
 
-    public View getView(int p, View v, ViewGroup parent){
+    @Override
+    public View getView(
+            int position,
+            View convertView,
+            ViewGroup parent){
 
-        TextView t=new TextView(context);
 
-        t.setText(apps[p]);
+        LinearLayout box =
+                new LinearLayout(context);
 
-        t.setTextSize(24);
 
-        t.setGravity(17);
-
-        t.setFocusable(true);
-
-        t.setPadding(20,50,20,50);
-
-        t.setBackgroundResource(
-            R.drawable.focus_background
+        box.setOrientation(
+                LinearLayout.VERTICAL
         );
 
-        return t;
+
+        box.setGravity(
+                Gravity.CENTER
+        );
+
+
+        box.setPadding(
+                20,20,20,20
+        );
+
+
+        ImageView icon =
+                new ImageView(context);
+
+
+        icon.setImageDrawable(
+                apps.get(position).icon
+        );
+
+
+        box.addView(
+                icon,
+                new LinearLayout.LayoutParams(
+                    120,
+                    120
+                )
+        );
+
+
+        TextView text =
+                new TextView(context);
+
+
+        text.setText(
+                apps.get(position).name
+        );
+
+
+        text.setTextColor(
+                Color.WHITE
+        );
+
+
+        text.setTextSize(
+                18
+        );
+
+
+        text.setTypeface(
+                Typeface.DEFAULT_BOLD
+        );
+
+
+        text.setGravity(
+                Gravity.CENTER
+        );
+
+
+        box.addView(
+                text,
+                new LinearLayout.LayoutParams(
+                    180,
+                    60
+                )
+        );
+
+
+        box.setFocusable(true);
+
+
+        box.setFocusableInTouchMode(true);
+
+
+        box.setBackgroundResource(
+                R.drawable.focus_background
+        );
+
+
+        box.setOnClickListener(
+            v -> {
+
+                Intent i =
+                    context.getPackageManager()
+                    .getLaunchIntentForPackage(
+                        apps.get(position).packageName
+                    );
+
+                if(i != null){
+
+                    context.startActivity(i);
+
+                }
+
+            }
+        );
+
+
+        return box;
+
     }
+
 }
