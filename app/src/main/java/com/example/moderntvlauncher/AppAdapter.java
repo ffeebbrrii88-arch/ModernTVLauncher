@@ -3,11 +3,13 @@ package com.example.moderntvlauncher;
 import android.content.Context;
 import android.content.Intent;
 import android.view.*;
+import android.view.animation.Animation;
 import android.widget.*;
 import android.widget.Toast;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.Animation;
 
 import java.util.ArrayList;
 
