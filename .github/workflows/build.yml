@@ -33,9 +33,23 @@ jobs:
           gradle-version: 8.11.1
 
 
+      - name: Clean build
+        run: |
+          gradle clean
+
+
       - name: Build Debug APK
         run: |
           gradle assembleDebug
+
+
+      - name: Check APK
+        run: |
+          echo "=== APK LIST ==="
+          ls -lh app/build/outputs/apk/debug/
+
+          echo "=== APK CONTENT ==="
+          unzip -l app/build/outputs/apk/debug/*.apk
 
 
       - name: Upload APK
