@@ -1,0 +1,6 @@
+R_DEF: Internal format may change without notice
+local
+drawable focus_background
+id appGrid
+layout activity_main
+style AppTheme

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.moderntvlauncher.app-debug-23:/drawable_focus_background.xml.flat",
+        "source": "com.example.moderntvlauncher.app-main-25:/drawable/focus_background.xml"
+    },
+    {
+        "merged": "com.example.moderntvlauncher.app-debug-23:/layout_activity_main.xml.flat",
+        "source": "com.example.moderntvlauncher.app-main-25:/layout/activity_main.xml"
+    }
+]
