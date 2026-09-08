@@ -1,25 +1,61 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+
     <application
+
         android:theme="@style/AppTheme"
+
         android:label="Modern TV Launcher">
 
+
         <activity
+
             android:name=".MainActivity"
+
             android:screenOrientation="landscape"
+
             android:exported="true">
+
 
             <intent-filter>
 
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.HOME"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
+
 
             </intent-filter>
 
+
         </activity>
 
+
+
+        <receiver
+
+            android:name=".BootReceiver"
+
+            android:enabled="true"
+
+            android:exported="true">
+
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+
+            </intent-filter>
+
+
+        </receiver>
+
+
     </application>
+
 
 </manifest>

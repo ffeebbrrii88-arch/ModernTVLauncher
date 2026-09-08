@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.*;
 import android.widget.*;
+import android.widget.Toast;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.view.animation.ScaleAnimation;
 
 import java.util.ArrayList;
 
@@ -56,22 +58,25 @@ public class AppAdapter extends BaseAdapter {
             ViewGroup parent){
 
 
-        LinearLayout box =
+        LinearLayout card =
                 new LinearLayout(context);
 
 
-        box.setOrientation(
+        card.setOrientation(
                 LinearLayout.VERTICAL
         );
 
 
-        box.setGravity(
+        card.setGravity(
                 Gravity.CENTER
         );
 
 
-        box.setPadding(
-                20,20,20,20
+        card.setPadding(
+                15,
+                15,
+                15,
+                15
         );
 
 
@@ -84,65 +89,104 @@ public class AppAdapter extends BaseAdapter {
         );
 
 
-        box.addView(
+        card.addView(
                 icon,
                 new LinearLayout.LayoutParams(
-                    120,
-                    120
+                    150,
+                    150
                 )
         );
 
 
-        TextView text =
+        TextView title =
                 new TextView(context);
 
 
-        text.setText(
+        title.setText(
                 apps.get(position).name
         );
 
 
-        text.setTextColor(
+        title.setTextColor(
                 Color.WHITE
         );
 
 
-        text.setTextSize(
+        title.setTextSize(
                 18
         );
 
 
-        text.setTypeface(
+        title.setTypeface(
                 Typeface.DEFAULT_BOLD
         );
 
 
-        text.setGravity(
+        title.setGravity(
                 Gravity.CENTER
         );
 
 
-        box.addView(
-                text,
+        title.setSingleLine(
+                true
+        );
+
+
+        card.addView(
+                title,
                 new LinearLayout.LayoutParams(
                     180,
-                    60
+                    50
                 )
         );
 
 
-        box.setFocusable(true);
+        card.setFocusable(true);
 
 
-        box.setFocusableInTouchMode(true);
+        card.setFocusableInTouchMode(true);
 
 
-        box.setBackgroundResource(
-                R.drawable.focus_background
+        card.setBackgroundResource(
+                R.drawable.card_focus
         );
 
 
-        box.setOnClickListener(
+        card.setOnFocusChangeListener(
+            (v, focused) -> {
+
+                if(focused){
+
+                    ScaleAnimation zoom =
+                        new ScaleAnimation(
+                            1.0f,
+                            1.10f,
+                            1.0f,
+                            1.10f,
+                            Animation.RELATIVE_TO_SELF,
+                            0.5f,
+                            Animation.RELATIVE_TO_SELF,
+                            0.5f
+                        );
+
+                    zoom.setDuration(150);
+
+                    zoom.setFillAfter(true);
+
+                    v.startAnimation(zoom);
+
+
+                } else {
+
+                    v.clearAnimation();
+
+                }
+
+            }
+        );
+
+
+        card.setOnClickListener(
             v -> {
 
                 Intent i =
@@ -150,6 +194,7 @@ public class AppAdapter extends BaseAdapter {
                     .getLaunchIntentForPackage(
                         apps.get(position).packageName
                     );
+
 
                 if(i != null){
 
@@ -161,7 +206,7 @@ public class AppAdapter extends BaseAdapter {
         );
 
 
-        return box;
+        return card;
 
     }
 

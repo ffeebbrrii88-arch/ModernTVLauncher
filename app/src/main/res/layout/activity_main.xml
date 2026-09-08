@@ -1,30 +1,109 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
 
     android:orientation="vertical"
 
-    android:padding="40dp"
+    android:padding="35dp"
 
-    android:background="#101010">
+    android:background="@drawable/launcher_background">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:text="MODERN TV"
+
+            android:textColor="#FFFFFF"
+
+            android:textStyle="bold"
+
+            android:textSize="36sp"
+
+            android:layout_width="0dp"
+
+            android:layout_weight="1"
+
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+
+            android:id="@+id/clockText"
+
+            android:text="00:00"
+
+            android:textColor="#FFFFFF"
+
+            android:textSize="30sp"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
 
 
     <TextView
 
-        android:text="MODERN TV LAUNCHER"
-
-        android:textSize="32sp"
+        android:text="Favorites"
 
         android:textColor="#FFFFFF"
 
-        android:textStyle="bold"
+        android:textSize="26sp"
+
+        android:paddingTop="30dp"
+
+        android:paddingBottom="10dp"
 
         android:layout_width="wrap_content"
 
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"/>
 
-        android:paddingBottom="30dp"/>
+
+    <GridView
+
+        android:id="@+id/favoriteGrid"
+
+        android:numColumns="6"
+
+        android:horizontalSpacing="30dp"
+
+        android:verticalSpacing="20dp"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="220dp"/>
+
+
+
+    <TextView
+
+        android:text="All Applications"
+
+        android:textColor="#FFFFFF"
+
+        android:textSize="26sp"
+
+        android:paddingTop="20dp"
+
+        android:paddingBottom="10dp"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"/>
+
 
 
     <GridView
@@ -35,11 +114,7 @@
 
         android:horizontalSpacing="30dp"
 
-        android:verticalSpacing="30dp"
-
-        android:gravity="center"
-
-        android:stretchMode="columnWidth"
+        android:verticalSpacing="20dp"
 
         android:layout_width="match_parent"
 
